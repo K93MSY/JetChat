@@ -19,3 +19,10 @@ https://qiita.com/okumurakengo/items/a8ccea065f5659d1a1de
 - PORT 80
 - Language Nodejs
 - Module ・express ・websocket
+
+
+## なんｄ
+https://github.com/K93MSY/2ch-clone  
+
+こっちは反映が遅いから  
+WebSocketの練習
