@@ -14,3 +14,8 @@ https://qiita.com/okumurakengo/items/a8ccea065f5659d1a1de
 - テストでデプロイして誰でも使える状態にする
 - IPのログ追加（しないかも（しないと思う））
 - Jsonファイルにバックアップ
+
+## いんふぉ
+- PORT 80
+- Language Nodejs
+- Module ・express ・websocket
