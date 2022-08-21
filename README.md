@@ -26,3 +26,6 @@ https://github.com/K93MSY/2ch-clone
 
 こっちは反映が遅いから  
 WebSocketの練習
+
+## Testデプロイしたサイト
+https://jetchat.wawa93.repl.co/
