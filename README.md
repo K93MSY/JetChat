@@ -29,3 +29,9 @@ WebSocketの練習
 
 ## Testデプロイしたサイト
 https://jetchat.wawa93.repl.co/
+
+## コミット履歴
+### - https://github.com/K93MSY/JetChat/commit/aad6d394be392bacc277e25ee8554df18635a142
+- CSSとHTMLを分割した
+- デザインの変更
+- IDの追加
