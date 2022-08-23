@@ -2,27 +2,24 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
+    <link rel="stylesheet" href="./style.css">
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #name { list-style-type: none; margin: 0; padding: 0; }
-      #name li { padding: 5px 10px; }
-      #name li:nth-child(odd) { background: #eee; }
-      #name { margin-bottom: 40px }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-      #messages { margin-bottom: 40px }
     </style>
   </head>
   <body>
-    <ul id="messages"></ul>
-    <form action="">
-        <input id="name" autocomplete="off" style="width:100%;bottom: 20px;height: 20px;" placeholder="name"/><input id="m" autocomplete="off" placeholder="message"/><button>Send</button>
-    </form>
+    <div id="mgaria">
+      <ul id="messages"></ul>
+    </div>
+    <a onclick="hideshow()" class="hideshow" id="hs"></a>
+    <div id="org">
+      <div id="CID">Your Connection ID: </div>
+      <div id="uis">
+        <form action="">
+          <input id="name" autocomplete="off" placeholder="name"/>
+          <input id="m" autocomplete="off" placeholder="message"/><button>Send</button>
+      </form>
+      </div>
+    </div>
     <!-- ↓の書き方に修正しました <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script> -->
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
@@ -38,12 +35,33 @@
             console.log(msg);
             $("#messages").html('');
         });
+        socket.on('connection ID', function(msg){
+            console.log('Your Connection ID is '+msg);
+            $('#CID').append(msg);
+        });
         socket.on('chat message', function(msg){
             console.log(msg.message);
           $('#messages').append($('<li>').text(msg.message));
           window.scrollTo(0, document.body.scrollHeight);
         });
       });
+      let ia=0;
+      function hideshow(){
+        if(ia%2==0){
+          $('#org').css('display', 'none');
+          $('#hs').css('width', '120px');
+          $('#hs').css('height', '10px');
+          $('#hs').css('left', '0');
+          $('#hs').css('bottom', '0');
+        }else{
+          $('#org').css('display', 'block');
+          $('#hs').css('width', '20px');
+          $('#hs').css('height', '20px');
+          $('#hs').css('left', '480px');
+          $('#hs').css('bottom', '70px');
+        }
+        ia++;
+      }
     </script>
   </body>
 </html>
