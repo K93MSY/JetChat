@@ -97,14 +97,21 @@ form button {
 }
 
 #messages .sol .u_name{
+    user-select: none;
     position: relative;
     font-weight: 700;
     top: -20px;
-    font-weight: 00px;
 }
 
 #messages .sol .u_name:hover{
     text-decoration: underline;
+}
+
+#messages .sol .u_uuid{
+    user-select: none;
+    position: relative;
+    top: -20px;
+    left: 15px;
 }
 
 #messages {
