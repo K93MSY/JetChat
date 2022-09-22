@@ -3,65 +3,29 @@
   <head>
     <title>Socket.IO chat</title>
     <link rel="stylesheet" href="./style.css">
-    <style>
-    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="./script.js"></script>
   </head>
   <body>
     <div id="mgaria">
-      <ul id="messages"></ul>
+      <div id="messages"></div>
     </div>
-    <a onclick="hideshow()" class="hideshow" id="hs"></a>
+    <div id="urid">
+      <a>ID:</a>
+      <a class="urid"></a>
+    </div>
     <div id="org">
-      <div id="CID">Your Connection ID: </div>
       <div id="uis">
         <form action="">
-          <input id="name" autocomplete="off" placeholder="name"/>
-          <input id="m" autocomplete="off" placeholder="message"/><button>Send</button>
+          <input id="name" autocomplete="off" placeholder="name" maxlength="10" required/>
+          <textarea id="textarea" autocomplete="off" placeholder="message" maxlength="140" required></textarea>
+          <button>Send</button>
       </form>
       </div>
     </div>
-    <!-- ↓の書き方に修正しました <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script> -->
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-      $(function () {
-        var socket = io();
-        $('form').submit(function(){
-          socket.emit('chat message', '<'+$('#name').val()+'>'+$('#m').val());
-          $('#m').val('');
-          return false;
-        });
-        socket.on('reset chat', function(msg){
-            console.log(msg);
-            $("#messages").html('');
-        });
-        socket.on('connection ID', function(msg){
-            console.log('Your Connection ID is '+msg);
-            $('#CID').append(msg);
-        });
-        socket.on('chat message', function(msg){
-            console.log(msg.message);
-          $('#messages').append($('<li>').text(msg.message));
-          window.scrollTo(0, document.body.scrollHeight);
-        });
-      });
-      let ia=0;
-      function hideshow(){
-        if(ia%2==0){
-          $('#org').css('display', 'none');
-          $('#hs').css('width', '120px');
-          $('#hs').css('height', '10px');
-          $('#hs').css('left', '0');
-          $('#hs').css('bottom', '0');
-        }else{
-          $('#org').css('display', 'block');
-          $('#hs').css('width', '20px');
-          $('#hs').css('height', '20px');
-          $('#hs').css('left', '480px');
-          $('#hs').css('bottom', '70px');
-        }
-        ia++;
-      }
-    </script>
   </body>
 </html>
